@@ -7,6 +7,10 @@ gem 'rails', '3.2.9'
 
 group :development, :test do
   gem 'sqlite3' 
+  gem 'guard-jasmine'
+  gem 'jasminerice'
+  gem 'libnotify'
+  gem 'rb-inotify'
 end
 
 # Gems used only for assets and not required
@@ -22,6 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'rb-readline'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
