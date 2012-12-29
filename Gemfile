@@ -10,8 +10,8 @@ group :development, :test do
   gem 'sqlite3' 
   gem 'guard-jasmine'
   gem 'jasminerice'
-  gem 'libnotify'
-  gem 'rb-inotify'
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'ruby_gntp'
 end
 
 # Gems used only for assets and not required
