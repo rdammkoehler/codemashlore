@@ -58,6 +58,16 @@ class LoresController < ApplicationController
   def update
     @lore = Lore.find(params[:id])
 
+    if params[:operation] == 'up'
+      @lore.ranking = @lore.ranking + 1
+      @lore.save
+      return render :json => {ranking: @lore.ranking}
+    elsif params[:operation] == 'down'
+      @lore.ranking = @lore.ranking - 1 
+      @lore.save
+      return render :json => {ranking: @lore.ranking}
+    end
+
     respond_to do |format|
       if @lore.update_attributes(params[:lore])
         format.html { redirect_to @lore, notice: 'Lore was successfully updated.' }

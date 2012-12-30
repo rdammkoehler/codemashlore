@@ -8,15 +8,20 @@
       <th><%= model_class.human_attribute_name(:context) %></th>
       <th><%= model_class.human_attribute_name(:ranking) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
+      <th>Votes</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @lores.each do |lore| %>
-      <tr>
-        <td><%= lore.context %></td>
-        <td><%= lore.ranking %></td>
+      <tr data-content="<%= lore.context %>">
+        <td><%= truncate(lore.context, length: 40) %></td>
+        <td id="ranking-<%= lore.id %>"><%= lore.ranking %></td>
         <td><%= lore.title %></td>
+        <td>
+          <a class='btn up-vote' data-id="<%= lore.id %>"><i class="icon-thumbs-up"></i> Up</a>
+          <a class='btn down-vote' data-id="<%= lore.id %>"><i class="icon-thumbs-down"></i> Down</a>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_lore_path(lore), :class => 'btn btn-mini' %>
