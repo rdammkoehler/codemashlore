@@ -16,6 +16,13 @@ var theModel = Backbone.Model.extend({
 });
 
 
-//Lab: Create a simple calculator to add two numbers
-// View take a model and have a render
-// Model have the operands
+/*Lab: Create a simple calculator to add two numbers
+ * Model
+ *  1. Should contain the operands
+ *  
+ * View
+ *  1. Take a model at initialize
+ *  2. Create a simple render function
+ *  3. Bind to any model changes
+ *  4. Bonus points: Have it add the numbers via model function rather than model bind
+*/ 

@@ -26,7 +26,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+# removing for intro branches gem 'jquery-rails'
 gem 'rb-readline'
 gem 'twitter-bootstrap-rails'
 
