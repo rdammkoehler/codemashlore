@@ -1,8 +1,8 @@
 <%= form_for @lore, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :context, :class => 'control-label' %>
+    <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :context, :class => 'text_area' %>
+      <%= f.text_area :content, :class => 'text_area' %>
     </div>
   </div>
   <div class="control-group">
@@ -15,6 +15,12 @@
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :shenanigans, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :shenanigans, :class => 'check_box' %>
     </div>
   </div>
 

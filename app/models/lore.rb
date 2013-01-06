@@ -1,3 +1,3 @@
 class Lore < ActiveRecord::Base
-  attr_accessible :context, :ranking, :title
+  attr_accessible :content, :ranking, :title, :shenanigans
 end

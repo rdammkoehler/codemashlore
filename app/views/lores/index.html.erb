@@ -5,7 +5,7 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:context) %></th>
+      <th><%= model_class.human_attribute_name(:content) %></th>
       <th><%= model_class.human_attribute_name(:ranking) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
       <th>Votes</th>
@@ -14,8 +14,8 @@
   </thead>
   <tbody>
     <% @lores.each do |lore| %>
-      <tr data-content="<%= lore.context %>">
-        <td><%= truncate(lore.context, length: 40) %></td>
+      <tr data-content="<%= lore.content %>">
+        <td><%= truncate(lore.content, length: 40) %></td>
         <td id="ranking-<%= lore.id %>"><%= lore.ranking %></td>
         <td><%= lore.title %></td>
         <td>

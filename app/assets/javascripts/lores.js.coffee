@@ -3,9 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  ($ 'tr').popover
-    trigger: 'hover'
-    placement: 'bottom'
 
   ($ '.up-vote').click ->
     id = ($ @).data('id')
