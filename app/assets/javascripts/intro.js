@@ -1,4 +1,6 @@
-var theView = Backbone.View.extend({
+window.Intro = {};
+
+Intro.theView = Backbone.View.extend({
   initialize: function(){
     this.model.on('change', this.render, this); 
   },
@@ -9,7 +11,7 @@ var theView = Backbone.View.extend({
   },
 });
 
-var theModel = Backbone.Model.extend({
+Intro.theModel = Backbone.Model.extend({
   defaults: {
     name: "Spongebob Squarepants"
   }
