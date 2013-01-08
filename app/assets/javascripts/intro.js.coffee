@@ -62,4 +62,3 @@ class Intro.calcView extends Backbone.View
 #  4. Output the sum, difference, product, and quotient of the operands
 #  5. Bonus points: Set up a simple form and button to take in the operands
 ###
-
