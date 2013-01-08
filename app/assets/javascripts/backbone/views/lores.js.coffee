@@ -6,6 +6,7 @@ class CodemashLore.Views.Lores extends Backbone.View
 
   events:
     'click .up-vote': 'upvote'
+    'click .down-vote': 'downvote'
 
   render: ->
     @$el.html @template
@@ -15,5 +16,12 @@ class CodemashLore.Views.Lores extends Backbone.View
     id = ($ e.currentTarget).data('id')
     lore = @collection.get(id)
     ranking = lore.get('ranking') + 1
+    lore.set 'ranking', ranking
+    lore.save()
+
+  downvote: (e) ->
+    id = ($ e.currentTarget).data('id')
+    lore = @collection.get(id)
+    ranking = lore.get('ranking') - 1
     lore.set 'ranking', ranking
     lore.save()

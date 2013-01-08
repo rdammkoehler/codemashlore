@@ -30,3 +30,11 @@ describe 'lores view', ->
     @subject.upvote e
     expect(lore.get('ranking')).toEqual 2
     expect(lore.save).toHaveBeenCalled()
+
+  it 'responds to downvote correctly', ->
+    lore = @collection.get(2)
+    spyOn(lore, 'save')
+    e = currentTarget: "<div data-id=2></div>"
+    @subject.downvote e
+    expect(lore.get('ranking')).toEqual 0
+    expect(lore.save).toHaveBeenCalled()
