@@ -1,13 +1,15 @@
 describe('lore', function() {
+
   beforeEach(function() {
-    return this.subject = new CodemashLore.Models.Lore({
-      id: 1
-    });
+    this.subject = new CodemashLore.Models.Lore({ id: 1 });
   });
+
   it('exists', function() {
-    return expect(this.subject).toBeDefined();
+    expect(this.subject).toBeDefined();
   });
-  return it('has the correct url', function() {
-    return expect(this.subject.url()).toEqual('lores/1');
+
+  it('has the correct url', function() {
+    expect(this.subject.url()).toEqual('lores/1');
   });
+
 });
