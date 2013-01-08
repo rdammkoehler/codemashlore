@@ -1,0 +1,28 @@
+<div class="control-group">
+  <label class="control-label" for="lore_content">Content</label>
+  <div class="controls">
+    <textarea class="text_area" cols="40" id="lore_content" name="lore[content]" rows="20"> </textarea>
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="lore_ranking">Ranking</label>
+  <div class="controls">
+    <input class="number_field" id="lore_ranking" name="lore[ranking]" type="number" />
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="lore_title">Title</label>
+  <div class="controls">
+    <input class="text_field" id="lore_title" name="lore[title]" size="30" type="text" />
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="lore_shenanigans">Shenanigans</label>
+  <div class="controls">
+    <input name="lore[shenanigans]" type="hidden" value="0" /><input class="check_box" id="lore_shenanigans" name="lore[shenanigans]" type="checkbox" value="1" />
+  </div>
+</div>
+<div class="form-actions">
+  <input id='add-lore' class="btn btn-primary" value="Create Lore" />
+  <a href="/lores" class="btn"><span class="translation_missing" title="translation missing: en.helpers.links.cancel">Cancel</span></a>
+</div>

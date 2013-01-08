@@ -1,2 +1,2 @@
 class CodemashLore.Models.Lore extends Backbone.Model
-  url: -> "lores/#{@id}"
+  url: -> if @isNew() then "/lores" else "/lores/#{@id}"
