@@ -1,0 +1,23 @@
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Ranking</th>
+      <th>Title</th>
+      <th>Ranking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for lore, i in @lores: %>
+      <tr>
+        <td><%= lore.content[0..40] %></td>
+        <td><%= lore.ranking %></td>
+        <td><%= lore.title %></td>
+        <td>
+          <a class='btn up-vote' data-id="<%= lore.id %>"><i class="icon-thumbs-up"></i> Up</a>
+          <a class='btn down-vote' data-id="<%= lore.id %>"><i class="icon-thumbs-down"></i> Down</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
