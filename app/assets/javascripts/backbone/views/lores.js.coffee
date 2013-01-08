@@ -1,27 +1,32 @@
 class CodemashLore.Views.Lores extends Backbone.View
-  template: JST['backbone/templates/lores']
 
   initialize: ->
-    @collection.on 'change', @render, @
+    @legitCollection = new CodemashLore.Collections.Lores()
+    @shenanigansCollection = new CodemashLore.Collections.Lores()
+    @bindCollections()
 
-  events:
-    'click .up-vote': 'upvote'
-    'click .down-vote': 'downvote'
+    @shenanigansView = new CodemashLore.Views.LoreGrid
+      collection: @shenanigansCollection
+      el: '#lores-shenanigans-table'
+
+    @legitView = new CodemashLore.Views.LoreGrid
+      collection: @legitCollection
+      el: '#lores-table'
+
+  bindCollections: ->
+    @legitCollection.on 'change', @render, @
+    @shenanigansCollection.on 'change', @render, @
 
   render: ->
-    @$el.html @template
-      lores: @collection.toJSON()
+    @renderLegit()
+    @renderShenanigans()
 
-  upvote: (e) ->
-    id = ($ e.currentTarget).data('id')
-    lore = @collection.get(id)
-    ranking = lore.get('ranking') + 1
-    lore.set 'ranking', ranking
-    lore.save()
+  renderLegit: ->
+    legit = @collection.where({shenanigans: false})
+    @legitCollection.reset legit
+    @legitView.render()
 
-  downvote: (e) ->
-    id = ($ e.currentTarget).data('id')
-    lore = @collection.get(id)
-    ranking = lore.get('ranking') - 1
-    lore.set 'ranking', ranking
-    lore.save()
+  renderShenanigans: ->
+    shenanigans = @collection.where({shenanigans: true})
+    @shenanigansCollection.reset shenanigans
+    @shenanigansView.render()

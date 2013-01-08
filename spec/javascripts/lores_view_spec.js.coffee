@@ -1,40 +1,37 @@
 describe 'lores view', ->
 
   beforeEach ->
-    setFixtures '''
-      <div id='lores'></div>
-    '''
     @collection = new CodemashLore.Collections.Lores [
-      {id: 1, content: 'x', ranking: 1},
-      {id: 2, content: 'x', ranking: 1}
+      {id: 1, content: 'x', ranking: 1, shenanigans: true},
+      {id: 2, content: 'x', ranking: 1, shenanigans: false}
     ]
     @subject = new CodemashLore.Views.Lores
       collection: @collection
-      el: '#lores'
 
-  it 'has a template', ->
-    expect(@subject.template).toBeDefined()
-
-  it 'has the correct events', ->
-    expect(@subject.events['click .up-vote']).toEqual 'upvote'
+  it 'binds the events correctly', ->
+    spyOn(@subject.legitCollection, 'on').andCallThrough()
+    spyOn(@subject.shenanigansCollection, 'on').andCallThrough()
+    @subject.bindCollections()
+    expect(@subject.legitCollection.on).toHaveBeenCalledWith 'change', @subject.render, @subject
+    expect(@subject.shenanigansCollection.on).toHaveBeenCalledWith 'change', @subject.render, @subject
 
   it 'renders correctly', ->
-    spyOn(@subject.$el, 'html')
+    spyOn(@subject, 'renderLegit')
+    spyOn(@subject, 'renderShenanigans')
     @subject.render()
-    expect(@subject.$el.html).toHaveBeenCalled()
+    expect(@subject.renderLegit).toHaveBeenCalled()
+    expect(@subject.renderShenanigans).toHaveBeenCalled()
 
-  it 'responds to upvote correctly', ->
-    lore = @collection.get(1)
-    spyOn(lore, 'save')
-    e = currentTarget: "<div data-id=1></div>"
-    @subject.upvote e
-    expect(lore.get('ranking')).toEqual 2
-    expect(lore.save).toHaveBeenCalled()
+  it 'renders legit grid', ->
+    spyOn(@subject.legitView, 'render')
+    @subject.renderLegit()
+    expect(@subject.legitView.render).toHaveBeenCalled()
+    expect(@subject.legitCollection.length).toEqual 1
+    expect(@subject.legitCollection.first().get('shenanigans')).toEqual false
 
-  it 'responds to downvote correctly', ->
-    lore = @collection.get(2)
-    spyOn(lore, 'save')
-    e = currentTarget: "<div data-id=2></div>"
-    @subject.downvote e
-    expect(lore.get('ranking')).toEqual 0
-    expect(lore.save).toHaveBeenCalled()
+  it 'renders shenanigans grid', ->
+    spyOn(@subject.shenanigansView, 'render')
+    @subject.renderShenanigans()
+    expect(@subject.shenanigansView.render).toHaveBeenCalled()
+    expect(@subject.shenanigansCollection.length).toEqual 1
+    expect(@subject.shenanigansCollection.first().get('shenanigans')).toEqual true

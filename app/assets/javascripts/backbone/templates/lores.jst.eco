@@ -5,6 +5,7 @@
       <th>Ranking</th>
       <th>Title</th>
       <th>Ranking</th>
+      <th>Flip</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,12 @@
         <td>
           <a class='btn up-vote' data-id="<%= lore.id %>"><i class="icon-thumbs-up"></i> Up</a>
           <a class='btn down-vote' data-id="<%= lore.id %>"><i class="icon-thumbs-down"></i> Down</a>
+        </td>
+        <td>
+          <a class='btn flip-shenanigans' data-id="<%= lore.id %>"><i class="icon-refresh"></i> Flip</a>
+        </td>
+        <td>
+          <a class='btn delete' data-id="<%= lore.id %>"><i class="icon-remove-circle"></i> Delete</a>
         </td>
       </tr>
     <% end %>
