@@ -1,4 +1,6 @@
-class theView extends Backbone.View
+window.Intro = {}
+
+class Intro.theView extends Backbone.View
   initialize: ->
     @model.on "change", @render, this
 
@@ -6,11 +8,11 @@ class theView extends Backbone.View
     $(".main").html "<h1>" + @model.get("name") + "</h1>"
     this
 
-class theModel extends Backbone.Model
+class Intro.theModel extends Backbone.Model
   defaults:
    name: "Spongebob Squarepants"
 
-class calcModel extends Backbone.Model
+class Intro.calcModel extends Backbone.Model
   defaults:
     operand1: 0
     operand2: 0
@@ -27,7 +29,7 @@ class calcModel extends Backbone.Model
   divide: ->
     @attributes.operand1 / @attributes.operand2
 
-class calcView extends Backbone.View
+class Intro.calcView extends Backbone.View
   initialize: ->
     @model.on "change", @render, this
 
