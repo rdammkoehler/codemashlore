@@ -1,6 +1,6 @@
 // use require to load any .js file available to the asset pipeline
 
-describe("WTF", function() {
+describe("simple test", function() {
   beforeEach(function () {
     this.isTrue = true;
   });
