@@ -1,7 +1,7 @@
 describe('intro files', function () {
   describe('theModel', function () {
     beforeEach(function () {
-      this.subject = new theModel();
+      this.subject = new Intro.theModel();
     });
   
     it('should have a default name', function () {
@@ -12,7 +12,7 @@ describe('intro files', function () {
   describe('theView', function () {
     beforeEach(function () {
       this.model = new Backbone.Model({ name: "Patrick" });
-      this.subject = new theView({ model: this.model });
+      this.subject = new Intro.theView({ model: this.model });
       setFixtures("<div class='main'></div>");
     });
   
