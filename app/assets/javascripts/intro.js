@@ -17,7 +17,7 @@ Intro.theModel = Backbone.Model.extend({
   }
 });
 
-var calcModel = Backbone.Model.extend({
+Intro.calcModel = Backbone.Model.extend({
   defaults: {
     operand1: 0,
     operand2: 0
@@ -36,7 +36,7 @@ var calcModel = Backbone.Model.extend({
   }
 });
 
-var calcView = Backbone.View.extend({
+Intro.calcView = Backbone.View.extend({
   initialize: function(){
     this.model.on('change', this.render, this); 
   },
