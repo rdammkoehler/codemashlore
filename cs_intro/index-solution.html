@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <title>CoffeeScript Solution</title> 
+  </head>
+  <body>
+    <div class="main">
+      <h1>FizzBuzz Results</h1>
+      <div id='fizzbuzz-results'>
+      </div>
+      <h1>Vehicle Select</h1>
+      <select id='vehicles'>
+      </select>
+    </div>
+    <script type="text/javascript" src="coffee-script.js"></script>
+    <script type="text/javascript" src="jquery-min.js"></script>
+    <script type="text/coffeescript">
+      ###############################################################
+
+      # Lab 1
+      # For a loop from 0 to 30
+      # if the number is a multiple of 3, print "Fizz"
+      # if the number is a multiple of 5, print "Buzz"
+      # if the number is a multipel of both, print "FizzBuzz"
+      # else, just print the number
+      # for extra credit, see if you can do it in one line
+
+      ($ '#fizzbuzz-results').append "#{if i%3 is 0 then 'Fizz<br/>' else ''}#{if i%5 is 0 then 'Buzz<br/>' else ''}" or i + "<br/>" for i in [1..30]
+
+
+      ###############################################################
+
+      # Lab 2
+
+      # Create a select list with the name of the person as the id 
+      # and the value  of their vehicle
+      #
+      # Omit any people with the type 'hobbit'
+      # for extra credit, see if you can do it in one line
+
+      people =
+        [
+          {
+            name: 'Gandalf'
+            type: 'Wizard'
+            vehicle:
+              name: 'Magic Bird'
+              type: 'Bird'
+          },
+          {
+            name: 'Darth Vader'
+            type: 'Sith Lord'
+            vehicle:
+              name: 'Star Destroyer'
+              type: 'Spaceship'
+          },
+          {
+            name: 'Frodo'
+            type: 'Hobbit'
+            vehicle:
+              name: 'Hobbit Feet'
+              type: 'Feet'
+          },
+          {
+            name: 'Jules Pitt'
+            type: 'Gangster'
+            vehicle:
+              name: 'Malibu'
+              type: 'Car'
+          }
+        ]
+
+      ($ '#vehicles').append ("<option value='#{x.name}'>#{x.vehicle.name}</option>" for x in people when x.type != 'Hobbit')
+
+    </script>
+  </body>
+</html>
