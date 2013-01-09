@@ -36,8 +36,8 @@ Intro.calcModel = Backbone.Model.extend({
 	result: "none"
     },
     calculate: function() {
-	this.attributes.result = this.attributes.operand0 + this.attributes.operator + this.attributes.operand1 + ";";
-	this.attributes.result = eval(this.attributes.result);
+	var calculation = this.attributes.operand0 + this.attributes.operator + this.attributes.operand1 + ";";
+	this.attributes.result = eval(calculation);
 	return this.attributes.result;
     }
 });
