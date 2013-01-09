@@ -13,10 +13,34 @@ Intro.theView = Backbone.View.extend({
 
 Intro.theModel = Backbone.Model.extend({
   defaults: {
-    name: "Spongebob Squarepants"
+      name: "Spongebob Squarepants"
   }
 });
 
+Intro.calcView = Backbone.View.extend({
+    initialize: function() {
+	this.model.on('change', this.render, this);
+    },
+
+    render: function() {
+	$('.main').html('<h2>' + this.model.get('result') + '</h2>');
+	return this;
+    }
+});
+
+Intro.calcModel = Backbone.Model.extend({
+    defaults: {
+	operator: '+',
+	operand0: '1',
+	operand1: '1',
+	result: "none"
+    },
+    calculate: function() {
+	this.attributes.result = this.attributes.operand0 + this.attributes.operator + this.attributes.operand1 + ";";
+	this.attributes.result = eval(this.attributes.result);
+	return this.attributes.result;
+    }
+});
 
 /*Lab: Create a simple calculator to operate on two numbers
  * Model
