@@ -51,7 +51,43 @@ describe('all of it', function() {
     describe('calc files', function() {
 	
 	describe('calcView',function() {
-	    //TODO!
+	    
+	    beforeEach(function() {
+		this.model = new Backbone.Model( { result: "blah" } );
+		this.subject = new Intro.calcView( { model: this.model } );
+		setFixtures("<div class='main'></div>");
+	    });
+
+	    it('the view should be defined', function() {
+		expect(this.subject).toBeDefined();
+	    });
+
+	    describe('#render', function() {
+
+		beforeEach(function() {
+		    this.renderedContent = this.subject.render();
+		});
+
+		it('should have the html appended', function() {
+		    expect($('.main').html()).toContain('blah');
+		});
+
+		it('should return itself', function() {
+		    expect(this.renderedContent).toEqual(this.subject);
+		});
+	    });
+
+	    describe("model binding", function() {
+
+		beforeEach(function () {
+		    this.model.set('result', '42');
+		});
+		
+		it('should have the html appended', function(){
+		    expect($('.main').html()).toContain('42'); 
+		});
+
+	    });
 	});
 
 	describe('calcModel', function() {
@@ -75,11 +111,11 @@ describe('all of it', function() {
 	    it('should have a default result', function() {
 		expect(this.subject.get('result')).toEqual("none");
 	    });
-/*
+
 	    it('should have a calculate function', function() {
 		expect(this.subject.calculate).toBeDefined();
 	    });
-*/
+
 	    describe('maths', function() {
 
 		beforeEach(function() {
@@ -111,14 +147,15 @@ describe('all of it', function() {
 		    expect(this.subject.get('result')).toEqual(0.42857142857142855);
 		});
 
-/* FUUUUUUUUUUCK!
 		it('does not validate operator', function() {
 		    this.subject.set('operator', 'r');
-		    expect(function() { this.subject.calculate(); }).toThrow(new SyntaxError("Unexpected token ILLEGAL"));
+		    var that = this;
+		    expect( function() { 
+			that.subject.calculate(); 
+		    } ).toThrow(new Error("Unexpected token ILLEGAL"));
 		});
-*/
-	    }); 
 
+	    }); 
 	});
     });
 });
